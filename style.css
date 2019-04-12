@@ -1,0 +1,36 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+#container {
+	width: 80%;
+	margin: auto;
+	text-align: center;
+}
+
+main table {
+	margin: auto;
+	border: 1px solid black;
+	width: 80%;
+	height: 80%;
+}
+
+main thead {
+	border-bottom: 1px solid black;
+}
+
+header {
+	margin: 20px 0px;
+}
+
+header h1 {
+	display: inline;
+	margin: 10px;
+}
+
+header button {
+	width: 50px;
+	height: 50px;
+	font-size: 2em;
+}
