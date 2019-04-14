@@ -1,36 +1,62 @@
 * {
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 #container {
-	width: 80%;
-	margin: auto;
-	text-align: center;
+  width: 80%;
+  margin: auto;
+  text-align: center;
 }
 
 main table {
-	margin: auto;
-	border: 1px solid black;
-	width: 80%;
-	height: 80%;
+  margin: auto;
+  border: 1px solid black;
+  width: 80%;
+  height: 80%;
+  background: rgba(245, 242, 69, 0.7);
 }
 
-main thead {
-	border-bottom: 1px solid black;
+main thead tr {
+  margin-top: 20px;
+  background-color: rgba(255, 0, 0, 0.7);
+  font-weight: bold;
+  font-size: 2em;
+}
+
+
+tbody td {
+  font-size: 1.5em;
+}
+
+main td,
+main th {
+  padding: 10px;
 }
 
 header {
-	margin: 20px 0px;
+  margin: 20px 0px;
 }
 
 header h1 {
-	display: inline;
-	margin: 10px;
+  display: inline;
+  margin: 10px;
 }
 
 header button {
-	width: 50px;
-	height: 50px;
-	font-size: 2em;
+  width: 50px;
+  height: 50px;
+  font-size: 2em;
+}
+
+#today {
+  color: blue;
+  background: aliceblue;
+  border-radius: 10px;
+  font-size: 2em;
+}
+
+tbody td:hover{
+  color : green;
+  background: greenyellow;
 }
