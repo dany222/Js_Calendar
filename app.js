@@ -20,9 +20,9 @@ const months = [
 ];
 const date = new Date();
 const currentYear = date.getFullYear();
+const currentMonth = date.getMonth();
 const currentDay = date.getDate();
 window.onload = renderPage();
-
 
 moveForward.addEventListener("click", () => {
   date.setMonth(date.getMonth() + 1);
@@ -34,9 +34,6 @@ moveBack.addEventListener("click", () => {
   renderPage();
 });
 
-
-
-
 function renderPage() {
   headline.innerHTML = `<span id='year'>${date.getFullYear()}</span>, <span id='month'>${
     months[date.getMonth()]
@@ -44,9 +41,19 @@ function renderPage() {
   renderBody();
   makeYearChangeable();
   makeMonthChangeable();
+  addTaskViewToDates();
 }
 
-
+function addTaskViewToDates() {
+  const dates = document.querySelectorAll("td");
+  dates.forEach(element =>
+    element.addEventListener("click", () => {
+      const container = document.createElement("div");
+      container.setAttribute("class", "task-container");
+      
+    })
+  );
+}
 
 function renderBody() {
   const datesInMonth = getdatesInGivenMonth();
@@ -71,9 +78,13 @@ function renderBody() {
   }
 
   datesInMonth.forEach(d => {
-    if (d === currentDay){
+    if (
+      d === currentDay &&
+      date.getFullYear() === currentYear &&
+      date.getMonth() === currentMonth
+    ) {
       html += `<td id='today'>${d}</td>`;
-    }else{
+    } else {
       html += `<td>${d}</td>`;
     }
     cellIndex++;
@@ -92,41 +103,39 @@ function makeYearChangeable() {
     let html = `<select id='year-select'>`;
     if (currentYear < date.getFullYear()) {
       for (let i = 0; i < 30; i++) {
-        html += `<option value=${date.getFullYear()-i}>${date.getFullYear()-i}</option>`;
+        html += `<option value=${date.getFullYear() - i}>${date.getFullYear() -
+          i}</option>`;
       }
     } else {
       for (let i = 0; i < 30; i++) {
-        html += `<option value=${currentYear - i}>${currentYear -
-        i}</option>`;
+        html += `<option value=${currentYear - i}>${currentYear - i}</option>`;
       }
     }
     html += "<select>";
     year.innerHTML = html;
-
   });
   year.addEventListener("change", () => {
     let yearValue = document.getElementById("year-select").value;
     date.setFullYear(yearValue);
     renderPage();
-
   });
 }
 
 function makeMonthChangeable() {
   const month = document.getElementById("month");
-  month.addEventListener('click', () => {
+  month.addEventListener("click", () => {
     let html = `<select id='month-select'>`;
     for (let i = 0; i < months.length; i++) {
       html += `<option value=${i}>${months[i]}</option>`;
     }
     html += `</select>`;
     month.innerHTML = html;
-  })
-  month.addEventListener('change', () => {
-    let monthValue = document.getElementById('month-select').value;
+  });
+  month.addEventListener("change", () => {
+    let monthValue = document.getElementById("month-select").value;
     date.setMonth(monthValue);
     renderPage();
-  })
+  });
 }
 /**
  *
